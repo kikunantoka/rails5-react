@@ -16,6 +16,9 @@ vendor/bundle/
 node_modules
 npm-debug.log
 
+# public
+public/assets/
+
 # rspec
 /spec/examples.txt
 /coverage
