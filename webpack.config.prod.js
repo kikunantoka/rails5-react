@@ -1,6 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const cssnext = require('postcss-cssnext');
 
 module.exports = {
   entry: {
@@ -17,7 +19,10 @@ module.exports = {
         loader: 'babel',
         exclude: /node_modules/,
       },
-      { test: /\.css$/, loader: 'style-loader!css-loader' },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      },
       { test: /\.svg$/, loader: 'url-loader?mimetype=image/svg+xml' },
       { test: /\.woff$/, loader: 'url-loader?mimetype=application/font-woff' },
       { test: /\.woff2$/, loader: 'url-loader?mimetype=application/font-woff' },
@@ -38,5 +43,9 @@ module.exports = {
       },
     }),
     new ManifestPlugin({ fileName: 'webpack-manifest.json' }),
+    new ExtractTextPlugin('[name]-[hash].css', { allChunks: true }),
   ],
+  postcss: function() {
+    return [cssnext];
+  }
 }
