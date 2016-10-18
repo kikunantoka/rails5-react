@@ -1,18 +1,20 @@
 const path = require('path');
+const webpack = require('webpack');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    bundle: path.join(__dirname, '/front/javascripts/app.js')
+    bundle: path.join(__dirname, '/front/src/js/app.js')
   },
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, '/public/assets/javascripts/'),
+    filename: '[name]-[hash].js',
+    path: path.join(__dirname, '/public/assets/'),
   },
   module: {
     loaders: [
       {
         test: /\.js[x]?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/,
       },
       { test: /\.css$/, loader: 'style-loader!css-loader' },
@@ -22,5 +24,19 @@ module.exports = {
       { test: /\.eot$/, loader: 'url-loader?mimetype=application/font-woff' },
       { test: /\.ttf$/, loader: 'url-loader?mimetype=application/font-woff' },
     ],
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      minimize: true,
+      compress: {
+        warnings: false,
+      },
+    }),
+    new ManifestPlugin({ fileName: 'webpack-manifest.json' }),
+  ],
 }
