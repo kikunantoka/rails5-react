@@ -19,7 +19,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader',
+        loaders: [
+          'style',
+          'css?modules&localIdentName=[name]--[local]--[hash:base64:5]',
+          'postcss'
+        ]
       },
       { test: /\.svg$/, loader: 'url-loader?mimetype=image/svg+xml' },
       { test: /\.woff$/, loader: 'url-loader?mimetype=application/font-woff' },
