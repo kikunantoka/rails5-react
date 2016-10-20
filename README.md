@@ -11,3 +11,16 @@ RAILS_ENV=production bundle exec rails server
 npm run dev
 bundle exec rails server
 ```
+
+## Ruby Version
+* 2.3.1
+
+## JS
+* React
+* Babel
+  * es2015
+
+## CSS
+* PostCSS
+  * cssnext
+* CSS Modules
