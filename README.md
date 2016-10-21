@@ -24,3 +24,7 @@ Foreman process are in Procfile.
 * PostCSS
   * cssnext
 * CSS Modules
+
+## Frameworks and Libraries
+* Bootstrap
+* Font Awesome
