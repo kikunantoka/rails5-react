@@ -3,14 +3,14 @@
 ## For Production
 ```
 npm run build
-RAILS_ENV=production bundle exec rails server
+SECRET_KEY_BASE=$(rails secret) RAILS_SERVE_STATIC_FILES=true RAILS_ENV=production bundle exec rails server
 ```
 
 ## For Development
 ```
-npm run dev
-bundle exec rails server
+foreman start
 ```
+Foreman process are in Procfile.
 
 ## Ruby Version
 * 2.3.1
