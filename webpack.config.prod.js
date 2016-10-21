@@ -24,13 +24,22 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style',
           ['css?modules&localIdentName=[name]--[local]--[hash:base64:5]', 'postcss']
-        )
+        ),
+        exclude: /node_modules/
       },
-      { test: /\.svg$/, loader: 'url-loader?mimetype=image/svg+xml' },
-      { test: /\.woff$/, loader: 'url-loader?mimetype=application/font-woff' },
-      { test: /\.woff2$/, loader: 'url-loader?mimetype=application/font-woff' },
-      { test: /\.eot$/, loader: 'url-loader?mimetype=application/font-woff' },
-      { test: /\.ttf$/, loader: 'url-loader?mimetype=application/font-woff' },
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract('style','css'),
+        include: /node_modules/,
+      },
+      {
+        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader'
+      }
     ],
   },
   plugins: [
