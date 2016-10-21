@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: rails5-react_production
-  username: rails5-react
-  password: <%= ENV['RAILS5-REACT_DATABASE_PASSWORD'] %>
+  username: root
+  password:
