@@ -8,8 +8,12 @@ var CommentBox = React.createClass({
   render: function() {
     return (
       <div>
-        <p>Hello, world! I am a CommentBox.<Icon spin name="spinner" /></p>
+        <p>Hello, world! I am a <span className={styles.importantText}>CommentBox</span>.<Icon spin name="spinner" /></p>
         <Button bsStyle="primary">Primary</Button>
+        <h2>This is background-image.</h2>
+        <div className={styles.image}></div>
+        <h2>This is img tag.</h2>
+        <img src={require('../img/animation-01.gif')}/>
       </div>
     );
   }

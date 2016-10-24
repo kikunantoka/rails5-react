@@ -11,6 +11,7 @@ module.exports = {
   output: {
     filename: '[name]-[hash].js',
     path: path.join(__dirname, '/public/assets/'),
+    publicPath: '/assets/',
   },
   module: {
     loaders: [
@@ -31,6 +32,10 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style','css'),
         include: /node_modules/,
+      },
+      {
+        test: /\.(jpeg|jpg|png|gif)$/,
+        loader: "file?name=img/[name]-[hash].[ext]"
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
