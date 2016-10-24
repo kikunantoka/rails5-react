@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Button} from 'react-bootstrap';
 import {Icon} from 'react-fa';
 import styles from '../css/main.css';
+import image from '../img/animation-01.gif';
 
 var CommentBox = React.createClass({
   render: function() {
@@ -13,7 +14,7 @@ var CommentBox = React.createClass({
         <h2>This is background-image.</h2>
         <div className={styles.image}></div>
         <h2>This is img tag.</h2>
-        <img src={require('../img/animation-01.gif')}/>
+        <img src={image}/>
       </div>
     );
   }
