@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const cssnext = require('postcss-cssnext');
 
 module.exports = {
   entry: {
@@ -14,7 +15,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js[x]?$/,
-        loader: 'babel-loader',
+        loader: 'babel',
         exclude: /node_modules/,
       },
       {
@@ -37,11 +38,11 @@ module.exports = {
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff'
+        loader: 'url?limit=10000&mimetype=application/font-woff'
       },
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
+        loader: 'file'
       }
     ],
   },
@@ -52,6 +53,9 @@ module.exports = {
       },
     }),
   ],
+  postcss: function() {
+    return [cssnext];
+  },
   devServer: {
     contentBase: '/public/assets/',
   },
