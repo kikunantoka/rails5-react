@@ -1,0 +1,12 @@
+parser: babel-eslint
+extends:
+  - airbnb
+  - standard
+plugins:
+  - react
+rules:
+  comma-dangle: [error, always-multiline]
+  no-use-before-define: [error, { functions: false }]
+  no-duplicate-imports: [0]
+  space-before-function-paren: [error, never]
+  react/jsx-filename-extension: [1, { "extensions": [".js", ".jsx"] }]
